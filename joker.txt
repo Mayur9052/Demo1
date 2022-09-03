@@ -1,0 +1,24 @@
+const  {client} = require('pg')
+
+const client = new client({
+	host:"localhost",
+	user:"postgres",
+	port:9000,
+	password:"joker123",
+	database:"joker"
+})
+
+client.connect()
+
+client.query(`select * from joker`,(err, res)=>
+	
+{
+	if(!err) {
+		console.log(res.rows);
+	}else {
+		console.log(err.message);
+	}
+
+	client.end;	
+}
+) 
